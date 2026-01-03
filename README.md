@@ -93,6 +93,62 @@ npx humanlayer join-waitlist --email ...
 
 ---
 
+## Local Development
+
+### Prerequisites
+
+- Go 1.21+
+- Node.js 18+
+- [Bun](https://bun.sh/) package manager
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/humanlayer/humanlayer.git
+cd humanlayer
+
+# Install dependencies and generate mocks
+make setup
+```
+
+### Running Locally
+
+```bash
+# Start everything (daemon + desktop UI)
+make codelayer-dev
+```
+
+This launches the full CodeLayer application with hot-reload enabled.
+
+### Running Components Separately
+
+```bash
+# Start just the daemon
+make daemon-dev
+
+# Start just the UI (requires daemon running)
+HUMANLAYER_WUI_AUTOLAUNCH_DAEMON=false make wui-dev
+```
+
+### Other Useful Commands
+
+| Command | Description |
+|---------|-------------|
+| `make check-test` | Run all checks and tests |
+| `make check` | Run linting and type checking |
+| `make test` | Run all test suites |
+| `make e2e-test` | Run end-to-end tests |
+| `make storybook` | Start Storybook for UI component development |
+
+### Data Locations
+
+- **Database**: `~/.humanlayer/daemon-dev.db`
+- **Logs**: `~/.humanlayer/logs/`
+- **Socket**: `~/.humanlayer/daemon-dev.sock`
+
+---
+
 ## Legacy Documentation
 
 Looking for the HumanLayer SDK documentation? See [humanlayer.md](./humanlayer.md)
